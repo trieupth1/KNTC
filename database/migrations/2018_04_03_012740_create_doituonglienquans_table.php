@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use \App\Database\Migration;
 
-class CreateloaidonsTable extends Migration
+class CreatedoituonglienquansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,18 @@ class CreateloaidonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('loaidons', function (Blueprint $table) {
+        Schema::create('doituonglienquans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ten');
-            $table->string('mo_ta');
+            $table->string('ten')->comment('ten doi tuong lien quan');
+            $table->unsignedBigInteger('vanban_id')->comment('van ban id');
+
             $table->softDeletes();
             // Add some more columns
 
             $table->timestamps();
         });
 
-        $this->updateTimestampDefaultValue('loaidons', ['updated_at'], ['created_at']);
+        $this->updateTimestampDefaultValue('doituonglienquans', ['updated_at'], ['created_at']);
     }
 
     /**
@@ -32,6 +33,6 @@ class CreateloaidonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loaidons');
+        Schema::dropIfExists('doituonglienquans');
     }
 }

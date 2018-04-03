@@ -15,7 +15,7 @@ class CreatexasTable extends Migration
         Schema::create('xas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('ten');
-            $table->unsignedBigInteger('tinh_id');
+            //$table->unsignedBigInteger('tinh_id');
             $table->unsignedBigInteger('huyen_id');
             $table->softDeletes();
 
