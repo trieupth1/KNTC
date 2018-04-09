@@ -14,8 +14,9 @@ class CreatenguondonsTable extends Migration
     {
         Schema::create('nguondons', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('loai_nguon_don')->comment('1: do dan gui den, 2: co quan don vi gui den');
             $table->unsignedBigInteger('chuthe_id');
-            $table->unsignedBigInteger('don_id');
+            //$table->unsignedBigInteger('don_id');
             $table->unsignedBigInteger('donviguidon_id');
             $table->softDeletes();
 
