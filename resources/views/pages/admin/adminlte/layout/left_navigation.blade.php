@@ -45,6 +45,7 @@
                 <li @if( $menu=='images') class="active" @endif ><a href="{!! \URL::action('Admin\ImageController@index') !!}"><i class="fa fa-file-image-o"></i> <span>@lang('admin.menu.images')</span></a></li>
                 <li @if( $menu=='logs') class="active" @endif ><a href="{!! \URL::action('Admin\LogController@index') !!}"><i class="fa fa-sticky-note-o"></i> <span>@lang('admin.menu.log_system')</span></a></li>
             @endif
+            <li @if( $menu=='dons') class="active" @endif ><a href="{!! \URL::action('Admin\DonController@index') !!}"><i class="fa fa-users"></i> <span>Dons</span></a></li>
             <!-- %%SIDEMENU%% -->
         </ul>
     </section>
