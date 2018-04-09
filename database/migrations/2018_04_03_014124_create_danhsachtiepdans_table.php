@@ -26,7 +26,7 @@ class CreatedanhsachtiepdansTable extends Migration
             $table->longText('de_xuat_xu_ly')->comment('de xuat xu ly cua can bo tiep dan');
             $table->longText('ket_luan')->commnet('ket luan cua chu tri tiep dan');
             $table->unsignedBigInteger('linhvuc_id');
-            $table->unsignedBigInteger('chutri_id');
+            $table->unsignedBigInteger('admin_user_id')->comment('chu tri');
             $table->unsignedBigInteger('nguoithamgia_id');
 
             // Add some more columns

@@ -147,4 +147,21 @@ $factory->define(
     }
 );
 
+$factory->define(App\Models\Don::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'tieude' => '',
+        'sohieu' => '',
+        'ngayvietdon' => '',
+        'noidung' => '',
+        'loaidon_id' => '',
+        'admin_user_id' => '',
+        'nhomdon_id' => '',
+        'hanxuly' => '',
+        'don_quoc_gia_id' => '',
+        'nguondon_id' => '',
+        'nguondon_type' => '',
+    ];
+});
+
 /* NEW MODEL FACTORY */

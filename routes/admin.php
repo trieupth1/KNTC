@@ -48,6 +48,7 @@
 
         \Route::post('signout', 'Admin\AuthController@postSignOut');
 
+        \Route::resource('dons', 'Admin\DonController');
         /* NEW ADMIN RESOURCE ROUTE */
 
     });

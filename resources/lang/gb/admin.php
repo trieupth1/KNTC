@@ -221,6 +221,21 @@ return [
                 'revoked'                => 'Revoked',
             ],
         ],
+        'dons'   => [
+            'columns'  => [
+                'tieude' => 'Tieude',
+                'sohieu' => 'Sohieu',
+                'ngayvietdon' => 'Ngayvietdon',
+                'noidung' => 'Noidung',
+                'loaidon_id' => 'Loaidon_id',
+                'admin_user_id' => 'Admin_user_id',
+                'nhomdon_id' => 'Nhomdon_id',
+                'hanxuly' => 'Hanxuly',
+                'don_quoc_gia_id' => 'Don_quoc_gia_id',
+                'nguondon_id' => 'Nguondon_id',
+                'nguondon_type' => 'Nguondon_type',
+            ],
+        ],
         /* NEW PAGE STRINGS */
     ],
     'roles'      => [
