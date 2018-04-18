@@ -105,6 +105,21 @@ class RepositoryBindServiceProvider extends ServiceProvider {
             \App\Repositories\Eloquent\DonRepository::class
         );
 
+        $this->app->singleton(
+            \App\Repositories\VanbanRepositoryInterface::class,
+            \App\Repositories\Eloquent\VanbanRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\DonviRepositoryInterface::class,
+            \App\Repositories\Eloquent\DonviRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\TintucRepositoryInterface::class,
+            \App\Repositories\Eloquent\TintucRepository::class
+        );
+
         /* NEW BINDING */
     }
 }

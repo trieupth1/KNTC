@@ -100,5 +100,20 @@ return [
             'local_type'  => 'common',
             'local_path'  => 'img/ogp/'
         ],
+        'file_vanban'  => [
+            'name'        => 'file_vanban',
+            'type'        => 'file',
+            'region'      => env('AWS_IMAGE_REGION'),
+            'buckets'     => [
+                env('AWS_IMAGE_BUCKET'),
+            ],
+            'size'        => [1024, 512],
+            'thumbnails'  => [
+            ],
+            'seed_prefix' => 'twitter_card',
+            'format'      => '',
+            'local_type'  => 'common',
+            'local_path'  => 'file/vanban/'
+        ],
     ],
 ];

@@ -22,5 +22,24 @@ class DonRepository extends SingleKeyModelRepository implements DonRepositoryInt
         return [
         ];
     }
+    
+    public function getDSDon($order, $direction, $offset, $limit,$input){
+
+        $skip = ($offset - 1)*$limit;
+        $query = $this->getBlankModel;
+        
+        if($input == Don::DON_CHO_XU_LY){
+            $query->where('status',Don::DON_CHO_XU_LY);
+        }
+
+        $query->take($limit);
+        $query->skip($skip);
+
+
+        $data = $query->orderBy($order, $direction)->skip($offset)->take($limit)->get();
+
+        return $data;
+        
+    }
 
 }

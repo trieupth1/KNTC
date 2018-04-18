@@ -164,4 +164,70 @@ $factory->define(App\Models\Don::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\VanBan::class, function (Faker\Generator $faker) {
+    return [
+    ];
+});
+
+$factory->define(App\Models\Vanban::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'ten' => '',
+        'so_hieu' => '',
+        'trich_dan' => '',
+        'ngay_ban_hanh' => '',
+        'ngay_nhan' => '',
+        'loai_van_ban' => '',
+        'don_id' => '',
+        'admin_user_id' => '',
+        'nguoi_ky' => '',
+        'donvi_id' => '',
+        'doi_tuong_lien_quan_1' => '',
+        'doi_tuong_lien_quan_2' => '',
+        'doi_tuong_lien_quan_3' => '',
+        'doi_tuong_lien_quan_4' => '',
+        'doi_tuong_lien_quan_5' => '',
+    ];
+});
+
+$factory->define(App\Models\Vanban::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'ten' => '',
+        'so_hieu' => '',
+        'trich_dan' => '',
+        'ngay_ban_hanh' => '',
+        'ngay_nhan' => '',
+        'loai_van_ban' => '',
+        'don_id' => '',
+        'admin_user_id' => '',
+        'nguoi_ky' => '',
+        'donvi_id' => '',
+    ];
+});
+
+$factory->define(App\Models\Donvi::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'tendonvi' => '',
+        'tructhuoccap' => '',
+        'diachi' => '',
+        'phone' => '',
+    ];
+});
+
+$factory->define(App\Models\Tintuc::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'tieu_de' => '',
+        'ngay_dang' => '',
+        'the_loai' => '',
+        'nguon_tin' => '',
+        'image_id' => '',
+        'tom_tat' => '',
+        'noi_dung' => '',
+        'trang_thai' => '',
+    ];
+});
+
 /* NEW MODEL FACTORY */

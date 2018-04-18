@@ -3,22 +3,22 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Repositories\DonRepositoryInterface;
-use App\Http\Requests\Admin\DonRequest;
+use App\Repositories\TintucRepositoryInterface;
+use App\Http\Requests\Admin\TintucRequest;
 use App\Http\Requests\PaginationRequest;
 
-class DonController extends Controller
+class TintucController extends Controller
 {
 
-    /** @var \App\Repositories\DonRepositoryInterface */
-    protected $donRepository;
+    /** @var \App\Repositories\TintucRepositoryInterface */
+    protected $tintucRepository;
 
 
     public function __construct(
-        DonRepositoryInterface $donRepository
+        TintucRepositoryInterface $tintucRepository
     )
     {
-        $this->donRepository = $donRepository;
+        $this->tintucRepository = $tintucRepository;
     }
 
     /**
@@ -33,18 +33,15 @@ class DonController extends Controller
         $paginate['offset']     = $request->offset();
         $paginate['order']      = $request->order();
         $paginate['direction']  = $request->direction();
-        $paginate['baseUrl']    = action( 'Admin\DonController@index' );
+        $paginate['baseUrl']    = action( 'Admin\TintucController@index' );
 
-        $count = $this->donRepository->count();
-
-        $aryDon = $this->donRepository->getDSDon($paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'] ,1);
-
-        $dons = $this->donRepository->get( $paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'] );
+        $count = $this->tintucRepository->count();
+        $tintucs = $this->tintucRepository->get( $paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'] );
 
         return view(
-            'pages.admin.' . config('view.admin') . '.dons.index',
+            'pages.admin.' . config('view.admin') . '.tintucs.index',
             [
-                'dons'    => $dons,
+                'tintucs'    => $tintucs,
                 'count'         => $count,
                 'paginate'      => $paginate,
             ]
@@ -59,10 +56,10 @@ class DonController extends Controller
     public function create()
     {
         return view(
-            'pages.admin.' . config('view.admin') . '.dons.edit',
+            'pages.admin.' . config('view.admin') . '.tintucs.edit',
             [
                 'isNew'     => true,
-                'don' => $this->donRepository->getBlankModel(),
+                'tintuc' => $this->tintucRepository->getBlankModel(),
             ]
         );
     }
@@ -73,18 +70,18 @@ class DonController extends Controller
      * @param  $request
      * @return \Response
      */
-    public function store(DonRequest $request)
+    public function store(TintucRequest $request)
     {
-        $input = $request->only(['tieude','sohieu','ngayvietdon','noidung','hanxuly','nguondon_type']);
+        $input = $request->only(['tieu_de','ngay_dang','the_loai','nguon_tin','tom_tat','noi_dung','trang_thai']);
         
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $don = $this->donRepository->create($input);
+        $tintuc = $this->tintucRepository->create($input);
 
-        if (empty( $don )) {
+        if (empty( $tintuc )) {
             return redirect()->back()->withErrors(trans('admin.errors.general.save_failed'));
         }
 
-        return redirect()->action('Admin\DonController@index')
+        return redirect()->action('Admin\TintucController@index')
             ->with('message-success', trans('admin.messages.general.create_success'));
     }
 
@@ -96,16 +93,16 @@ class DonController extends Controller
      */
     public function show($id)
     {
-        $don = $this->donRepository->find($id);
-        if (empty( $don )) {
+        $tintuc = $this->tintucRepository->find($id);
+        if (empty( $tintuc )) {
             abort(404);
         }
 
         return view(
-            'pages.admin.' . config('view.admin') . '.dons.edit',
+            'pages.admin.' . config('view.admin') . '.tintucs.edit',
             [
                 'isNew' => false,
-                'don' => $don,
+                'tintuc' => $tintuc,
             ]
         );
     }
@@ -128,19 +125,19 @@ class DonController extends Controller
      * @param      $request
      * @return \Response
      */
-    public function update($id, DonRequest $request)
+    public function update($id, TintucRequest $request)
     {
-        /** @var \App\Models\Don $don */
-        $don = $this->donRepository->find($id);
-        if (empty( $don )) {
+        /** @var \App\Models\Tintuc $tintuc */
+        $tintuc = $this->tintucRepository->find($id);
+        if (empty( $tintuc )) {
             abort(404);
         }
-        $input = $request->only(['tieude','sohieu','ngayvietdon','noidung','hanxuly','nguondon_type']);
+        $input = $request->only(['tieu_de','ngay_dang','the_loai','nguon_tin','tom_tat','noi_dung','trang_thai']);
         
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->donRepository->update($don, $input);
+        $this->tintucRepository->update($tintuc, $input);
 
-        return redirect()->action('Admin\DonController@show', [$id])
+        return redirect()->action('Admin\TintucController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));
     }
 
@@ -152,14 +149,14 @@ class DonController extends Controller
      */
     public function destroy($id)
     {
-        /** @var \App\Models\Don $don */
-        $don = $this->donRepository->find($id);
-        if (empty( $don )) {
+        /** @var \App\Models\Tintuc $tintuc */
+        $tintuc = $this->tintucRepository->find($id);
+        if (empty( $tintuc )) {
             abort(404);
         }
-        $this->donRepository->delete($don);
+        $this->tintucRepository->delete($tintuc);
 
-        return redirect()->action('Admin\DonController@index')
+        return redirect()->action('Admin\TintucController@index')
                     ->with('message-success', trans('admin.messages.general.delete_success'));
     }
 

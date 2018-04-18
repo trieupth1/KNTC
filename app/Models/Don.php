@@ -33,6 +33,16 @@ class Don extends Base
         'nguondon_type',
     ];
 
+    const DON_CHO_XU_LY = 1;
+    const DON_CHO_DANG_XU_LY = 2;
+    const DON_CHO_DA_XU_LY = 3;
+
+    public $donStatus = [
+        self::DON_CHO_XU_LY => 'Cho xu ly',
+        self::DON_CHO_DANG_XU_LY => 'Dang xu ly',
+        self::DON_CHO_DA_XU_LY => 'Da xu ly'
+    ];
+
     /**
      * The attributes excluded from the model's JSON form.
      *
@@ -40,7 +50,7 @@ class Don extends Base
      */
     protected $hidden = [];
 
-    protected $dates  = ['deleted_at'];
+    protected $dates = ['deleted_at'];
 
     protected $presenter = \App\Presenters\DonPresenter::class;
 
@@ -76,7 +86,7 @@ class Don extends Base
         return $this->belongsTo(\App\Models\Nguondon::class, 'nguondon_id', 'id');
     }
 
-    
+
 
     // Utility Functions
 

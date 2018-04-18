@@ -3,22 +3,24 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Repositories\DonRepositoryInterface;
-use App\Http\Requests\Admin\DonRequest;
+use App\Repositories\DonviRepositoryInterface;
+use App\Http\Requests\Admin\DonviRequest;
 use App\Http\Requests\PaginationRequest;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-class DonController extends Controller
+class DonviController extends Controller
 {
 
-    /** @var \App\Repositories\DonRepositoryInterface */
-    protected $donRepository;
+    /** @var \App\Repositories\DonviRepositoryInterface */
+    protected $donviRepository;
 
 
     public function __construct(
-        DonRepositoryInterface $donRepository
+        DonviRepositoryInterface $donviRepository
     )
     {
-        $this->donRepository = $donRepository;
+        $this->donviRepository = $donviRepository;
     }
 
     /**
@@ -33,18 +35,15 @@ class DonController extends Controller
         $paginate['offset']     = $request->offset();
         $paginate['order']      = $request->order();
         $paginate['direction']  = $request->direction();
-        $paginate['baseUrl']    = action( 'Admin\DonController@index' );
+        $paginate['baseUrl']    = action( 'Admin\DonviController@index' );
 
-        $count = $this->donRepository->count();
-
-        $aryDon = $this->donRepository->getDSDon($paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'] ,1);
-
-        $dons = $this->donRepository->get( $paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'] );
+        $count = $this->donviRepository->count();
+        $donvis = $this->donviRepository->get( $paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'] );
 
         return view(
-            'pages.admin.' . config('view.admin') . '.dons.index',
+            'pages.admin.' . config('view.admin') . '.donvis.index',
             [
-                'dons'    => $dons,
+                'donvis'    => $donvis,
                 'count'         => $count,
                 'paginate'      => $paginate,
             ]
@@ -59,10 +58,10 @@ class DonController extends Controller
     public function create()
     {
         return view(
-            'pages.admin.' . config('view.admin') . '.dons.edit',
+            'pages.admin.' . config('view.admin') . '.donvis.edit',
             [
                 'isNew'     => true,
-                'don' => $this->donRepository->getBlankModel(),
+                'donvi' => $this->donviRepository->getBlankModel(),
             ]
         );
     }
@@ -73,18 +72,18 @@ class DonController extends Controller
      * @param  $request
      * @return \Response
      */
-    public function store(DonRequest $request)
+    public function store(DonviRequest $request)
     {
-        $input = $request->only(['tieude','sohieu','ngayvietdon','noidung','hanxuly','nguondon_type']);
+        $input = $request->only(['tendonvi','tructhuoccap','diachi','phone']);
         
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $don = $this->donRepository->create($input);
+        $donvi = $this->donviRepository->create($input);
 
-        if (empty( $don )) {
+        if (empty( $donvi )) {
             return redirect()->back()->withErrors(trans('admin.errors.general.save_failed'));
         }
 
-        return redirect()->action('Admin\DonController@index')
+        return redirect()->action('Admin\DonviController@index')
             ->with('message-success', trans('admin.messages.general.create_success'));
     }
 
@@ -96,16 +95,16 @@ class DonController extends Controller
      */
     public function show($id)
     {
-        $don = $this->donRepository->find($id);
-        if (empty( $don )) {
+        $donvi = $this->donviRepository->find($id);
+        if (empty( $donvi )) {
             abort(404);
         }
 
         return view(
-            'pages.admin.' . config('view.admin') . '.dons.edit',
+            'pages.admin.' . config('view.admin') . '.donvis.edit',
             [
                 'isNew' => false,
-                'don' => $don,
+                'donvi' => $donvi,
             ]
         );
     }
@@ -128,19 +127,19 @@ class DonController extends Controller
      * @param      $request
      * @return \Response
      */
-    public function update($id, DonRequest $request)
+    public function update($id, DonviRequest $request)
     {
-        /** @var \App\Models\Don $don */
-        $don = $this->donRepository->find($id);
-        if (empty( $don )) {
+        /** @var \App\Models\Donvi $donvi */
+        $donvi = $this->donviRepository->find($id);
+        if (empty( $donvi )) {
             abort(404);
         }
-        $input = $request->only(['tieude','sohieu','ngayvietdon','noidung','hanxuly','nguondon_type']);
+        $input = $request->only(['tendonvi','tructhuoccap','diachi','phone']);
         
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->donRepository->update($don, $input);
+        $this->donviRepository->update($donvi, $input);
 
-        return redirect()->action('Admin\DonController@show', [$id])
+        return redirect()->action('Admin\DonviController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));
     }
 
@@ -152,15 +151,28 @@ class DonController extends Controller
      */
     public function destroy($id)
     {
-        /** @var \App\Models\Don $don */
-        $don = $this->donRepository->find($id);
-        if (empty( $don )) {
+        /** @var \App\Models\Donvi $donvi */
+        $donvi = $this->donviRepository->find($id);
+        if (empty( $donvi )) {
             abort(404);
         }
-        $this->donRepository->delete($don);
+        $this->donviRepository->delete($donvi);
 
-        return redirect()->action('Admin\DonController@index')
+        return redirect()->action('Admin\DonviController@index')
                     ->with('message-success', trans('admin.messages.general.delete_success'));
+    }
+
+    public function getAutocomplete(DonviRequest $requests){
+
+        //return 1;
+        $results = ['value'=>'aaaa'];
+        $data = $this->donviRepository->getDonVi($requests->term);
+        foreach ($data as $key => $value){
+            $results[]=['value' =>$value->item];
+        }
+        //return response()->json($results);
+        return Response::json($results);
+
     }
 
 }

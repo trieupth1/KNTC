@@ -11,6 +11,7 @@
     @yield('styles')
     <!-------------------------------- End: stylesheet ----------------------------------->
 
+
 </head>
 <body class="{!! isset($bodyClasses) ? $bodyClasses : 'hold-transition skin-blue sidebar-mini' !!}">
 @if( isset($noFrame) && $noFrame == true )

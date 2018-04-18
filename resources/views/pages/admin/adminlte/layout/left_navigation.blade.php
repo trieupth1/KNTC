@@ -46,6 +46,9 @@
                 <li @if( $menu=='logs') class="active" @endif ><a href="{!! \URL::action('Admin\LogController@index') !!}"><i class="fa fa-sticky-note-o"></i> <span>@lang('admin.menu.log_system')</span></a></li>
             @endif
             <li @if( $menu=='dons') class="active" @endif ><a href="{!! \URL::action('Admin\DonController@index') !!}"><i class="fa fa-users"></i> <span>Dons</span></a></li>
+            <li @if( $menu=='vanbans') class="active" @endif ><a href="{!! \URL::action('Admin\VanbanController@index') !!}"><i class="fa fa-users"></i> <span>Vanbans</span></a></li>
+            <li @if( $menu=='donvis') class="active" @endif ><a href="{!! \URL::action('Admin\DonviController@index') !!}"><i class="fa fa-users"></i> <span>Donvis</span></a></li>
+            <li @if( $menu=='tintucs') class="active" @endif ><a href="{!! \URL::action('Admin\TintucController@index') !!}"><i class="fa fa-users"></i> <span>Tintucs</span></a></li>
             <!-- %%SIDEMENU%% -->
         </ul>
     </section>
