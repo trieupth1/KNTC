@@ -49,7 +49,15 @@
         \Route::post('signout', 'Admin\AuthController@postSignOut');
 
         \Route::resource('dons', 'Admin\DonController');
-        /* NEW ADMIN RESOURCE ROUTE */
+        \Route::resource('vanbans', 'Admin\VanbanController');
+        \Route::resource('donvis', 'Admin\DonviController');
 
+        \Route::resource('tintucs', 'Admin\TintucController');
+        /* NEW ADMIN RESOURCE ROUTE */
+        \Route::get('auto', 'Admin\VanbanController@vanBanAutocomplete')->name('autocomplete');
     });
+
+
 });
+
+

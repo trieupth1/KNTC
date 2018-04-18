@@ -236,6 +236,45 @@ return [
                 'nguondon_type' => 'Nguondon_type',
             ],
         ],
+        'vanbans'   => [
+            'columns'  => [
+                'ten' => 'Ten văn bản',
+                'so_hieu' => 'Số hiệu',
+                'trich_dan' => 'Trich dẫn',
+                'ngay_ban_hanh' => 'Ngày ban hành',
+                'ngay_nhan' => 'Ngày nhận',
+                'loai_van_ban' => 'Loại văn bản',
+                'don_id' => 'Đơn liên quan',
+                'admin_user_id' => 'Admin_user_id',
+                'nguoi_ky' => 'Người ký',
+                'donvi_id' => 'Cơ quan ban hành',
+                'doi_tuong_lien_quan_1' => 'Đối tượng liên quan',
+                'doi_tuong_lien_quan_2' => 'Đối tượng liên quan 2',
+                'doi_tuong_lien_quan_3' => 'Đối tượng liên quan 3',
+                'doi_tuong_lien_quan_4' => 'Đối tượng liên quan 4',
+                'doi_tuong_lien_quan_5' => 'Đối tượng liên quan 5',
+            ],
+        ],
+        'donvis'   => [
+            'columns'  => [
+                'tendonvi' => 'Tendonvi',
+                'tructhuoccap' => 'Tructhuoccap',
+                'diachi' => 'Diachi',
+                'phone' => 'Phone',
+            ],
+        ],
+        'tintucs'   => [
+            'columns'  => [
+                'tieu_de' => 'Tieu_de',
+                'ngay_dang' => 'Ngay_dang',
+                'the_loai' => 'The_loai',
+                'nguon_tin' => 'Nguon_tin',
+                'image_id' => 'Image_id',
+                'tom_tat' => 'Tom_tat',
+                'noi_dung' => 'Noi_dung',
+                'trang_thai' => 'Trang_thai',
+            ],
+        ],
         /* NEW PAGE STRINGS */
     ],
     'roles'      => [

@@ -9,6 +9,7 @@
 <script src="{!! \URLHelper::asset('libs/plugins/toastr/toastr.min.js', 'admin') !!}"></script>
 <script src="{!! \URLHelper::asset('libs/plugins/flagstrap/dist/js/jquery.flagstrap.min.js', 'admin') !!}"></script>
 <script src="{!! \URLHelper::asset('js/script.js', 'admin/adminlte') !!}"></script>
+{{--<script src="{!! \URLHelper::asset('js/jquery.autocomplete.js', 'admin/adminlte') !!}"></script>--}}
 
 <script type="text/javascript">
     var Boilerplate = {

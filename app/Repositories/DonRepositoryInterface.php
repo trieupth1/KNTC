@@ -2,4 +2,5 @@
 
 interface DonRepositoryInterface extends SingleKeyModelRepositoryInterface
 {
+    public function getDSDon($order, $direction, $offset, $limit,$input);
 }
