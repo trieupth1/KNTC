@@ -1,14 +1,14 @@
 <?php namespace App\Repositories\Eloquent;
 
-use \App\Repositories\DonRepositoryInterface;
-use \App\Models\Don;
+use \App\Repositories\ChutheRepositoryInterface;
+use \App\Models\Chuthe;
 
-class DonRepository extends SingleKeyModelRepository implements DonRepositoryInterface
+class ChutheRepository extends SingleKeyModelRepository implements ChutheRepositoryInterface
 {
 
     public function getBlankModel()
     {
-        return new Don();
+        return new Chuthe();
     }
 
     public function rules()

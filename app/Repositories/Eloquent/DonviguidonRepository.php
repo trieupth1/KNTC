@@ -1,14 +1,14 @@
 <?php namespace App\Repositories\Eloquent;
 
-use \App\Repositories\DonRepositoryInterface;
-use \App\Models\Don;
+use \App\Repositories\DonviguidonRepositoryInterface;
+use \App\Models\Donviguidon;
 
-class DonRepository extends SingleKeyModelRepository implements DonRepositoryInterface
+class DonviguidonRepository extends SingleKeyModelRepository implements DonviguidonRepositoryInterface
 {
 
     public function getBlankModel()
     {
-        return new Don();
+        return new Donviguidon();
     }
 
     public function rules()

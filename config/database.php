@@ -75,6 +75,7 @@ return [
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
             'strict' => false,
+            'engine' => 'InnoDB ROW_FORMAT=DYNAMIC',
         ],
 
         'pgsql' => [

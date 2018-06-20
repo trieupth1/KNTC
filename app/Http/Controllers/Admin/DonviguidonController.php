@@ -3,22 +3,22 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Repositories\DonRepositoryInterface;
-use App\Http\Requests\Admin\DonRequest;
+use App\Repositories\DonviguidonRepositoryInterface;
+use App\Http\Requests\Admin\DonviguidonRequest;
 use App\Http\Requests\PaginationRequest;
 
-class DonController extends Controller
+class DonviguidonController extends Controller
 {
 
-    /** @var \App\Repositories\DonRepositoryInterface */
-    protected $donRepository;
+    /** @var \App\Repositories\DonviguidonRepositoryInterface */
+    protected $donviguidonRepository;
 
 
     public function __construct(
-        DonRepositoryInterface $donRepository
+        DonviguidonRepositoryInterface $donviguidonRepository
     )
     {
-        $this->donRepository = $donRepository;
+        $this->donviguidonRepository = $donviguidonRepository;
     }
 
     /**
@@ -33,15 +33,15 @@ class DonController extends Controller
         $paginate['offset']     = $request->offset();
         $paginate['order']      = $request->order();
         $paginate['direction']  = $request->direction();
-        $paginate['baseUrl']    = action( 'Admin\DonController@index' );
+        $paginate['baseUrl']    = action( 'Admin\DonviguidonController@index' );
 
-        $count = $this->donRepository->count();
-        $dons = $this->donRepository->get( $paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'] );
+        $count = $this->donviguidonRepository->count();
+        $donviguidons = $this->donviguidonRepository->get( $paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'] );
 
         return view(
-            'pages.admin.' . config('view.admin') . '.dons.index',
+            'pages.admin.' . config('view.admin') . '.donviguidons.index',
             [
-                'dons'    => $dons,
+                'donviguidons'    => $donviguidons,
                 'count'         => $count,
                 'paginate'      => $paginate,
             ]
@@ -56,10 +56,10 @@ class DonController extends Controller
     public function create()
     {
         return view(
-            'pages.admin.' . config('view.admin') . '.dons.create',
+            'pages.admin.' . config('view.admin') . '.donviguidons.edit',
             [
                 'isNew'     => true,
-                'don' => $this->donRepository->getBlankModel(),
+                'donviguidon' => $this->donviguidonRepository->getBlankModel(),
             ]
         );
     }
@@ -70,18 +70,18 @@ class DonController extends Controller
      * @param  $request
      * @return \Response
      */
-    public function store(DonRequest $request)
+    public function store(DonviguidonRequest $request)
     {
-        $input = $request->only(['tieude','sohieu','ngayvietdon','ngaynhan','noidung','nguondon_type','socongvan','vanbanuyquen','doituongtrendon','nguoilienquan','hanxuly','tailieudinhkem','trangthai']);
+        $input = $request->only(['sokyhieu','ngaybanhanh']);
         
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $don = $this->donRepository->create($input);
+        $donviguidon = $this->donviguidonRepository->create($input);
 
-        if (empty( $don )) {
+        if (empty( $donviguidon )) {
             return redirect()->back()->withErrors(trans('admin.errors.general.save_failed'));
         }
 
-        return redirect()->action('Admin\DonController@index')
+        return redirect()->action('Admin\DonviguidonController@index')
             ->with('message-success', trans('admin.messages.general.create_success'));
     }
 
@@ -93,16 +93,16 @@ class DonController extends Controller
      */
     public function show($id)
     {
-        $don = $this->donRepository->find($id);
-        if (empty( $don )) {
+        $donviguidon = $this->donviguidonRepository->find($id);
+        if (empty( $donviguidon )) {
             abort(404);
         }
 
         return view(
-            'pages.admin.' . config('view.admin') . '.dons.edit',
+            'pages.admin.' . config('view.admin') . '.donviguidons.edit',
             [
                 'isNew' => false,
-                'don' => $don,
+                'donviguidon' => $donviguidon,
             ]
         );
     }
@@ -125,19 +125,19 @@ class DonController extends Controller
      * @param      $request
      * @return \Response
      */
-    public function update($id, DonRequest $request)
+    public function update($id, DonviguidonRequest $request)
     {
-        /** @var \App\Models\Don $don */
-        $don = $this->donRepository->find($id);
-        if (empty( $don )) {
+        /** @var \App\Models\Donviguidon $donviguidon */
+        $donviguidon = $this->donviguidonRepository->find($id);
+        if (empty( $donviguidon )) {
             abort(404);
         }
-        $input = $request->only(['tieude','sohieu','ngayvietdon','ngaynhan','noidung','nguondon_type','socongvan','vanbanuyquen','doituongtrendon','nguoilienquan','hanxuly','tailieudinhkem','trangthai']);
+        $input = $request->only(['sokyhieu','ngaybanhanh']);
         
         $input['is_enabled'] = $request->get('is_enabled', 0);
-        $this->donRepository->update($don, $input);
+        $this->donviguidonRepository->update($donviguidon, $input);
 
-        return redirect()->action('Admin\DonController@show', [$id])
+        return redirect()->action('Admin\DonviguidonController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));
     }
 
@@ -149,14 +149,14 @@ class DonController extends Controller
      */
     public function destroy($id)
     {
-        /** @var \App\Models\Don $don */
-        $don = $this->donRepository->find($id);
-        if (empty( $don )) {
+        /** @var \App\Models\Donviguidon $donviguidon */
+        $donviguidon = $this->donviguidonRepository->find($id);
+        if (empty( $donviguidon )) {
             abort(404);
         }
-        $this->donRepository->delete($don);
+        $this->donviguidonRepository->delete($donviguidon);
 
-        return redirect()->action('Admin\DonController@index')
+        return redirect()->action('Admin\DonviguidonController@index')
                     ->with('message-success', trans('admin.messages.general.delete_success'));
     }
 

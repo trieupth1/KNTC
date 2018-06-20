@@ -49,8 +49,15 @@ Dons
                 <th>{!! \PaginationHelper::sort('tieude', trans('admin.pages.dons.columns.tieude')) !!}</th>
                 <th>{!! \PaginationHelper::sort('sohieu', trans('admin.pages.dons.columns.sohieu')) !!}</th>
                 <th>{!! \PaginationHelper::sort('ngayvietdon', trans('admin.pages.dons.columns.ngayvietdon')) !!}</th>
-                <th>{!! \PaginationHelper::sort('hanxuly', trans('admin.pages.dons.columns.hanxuly')) !!}</th>
+                <th>{!! \PaginationHelper::sort('ngaynhan', trans('admin.pages.dons.columns.ngaynhan')) !!}</th>
                 <th>{!! \PaginationHelper::sort('nguondon_type', trans('admin.pages.dons.columns.nguondon_type')) !!}</th>
+                <th>{!! \PaginationHelper::sort('socongvan', trans('admin.pages.dons.columns.socongvan')) !!}</th>
+                <th>{!! \PaginationHelper::sort('vanbanuyquen', trans('admin.pages.dons.columns.vanbanuyquen')) !!}</th>
+                <th>{!! \PaginationHelper::sort('doituongtrendon', trans('admin.pages.dons.columns.doituongtrendon')) !!}</th>
+                <th>{!! \PaginationHelper::sort('nguoilienquan', trans('admin.pages.dons.columns.nguoilienquan')) !!}</th>
+                <th>{!! \PaginationHelper::sort('hanxuly', trans('admin.pages.dons.columns.hanxuly')) !!}</th>
+                <th>{!! \PaginationHelper::sort('tailieudinhkem', trans('admin.pages.dons.columns.tailieudinhkem')) !!}</th>
+                <th>{!! \PaginationHelper::sort('trangthai', trans('admin.pages.dons.columns.trangthai')) !!}</th>
 
                 <th style="width: 40px">{!! \PaginationHelper::sort('is_enabled', trans('admin.pages.common.label.is_enabled')) !!}</th>
                 <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
@@ -61,8 +68,15 @@ Dons
                <td>{{ $don->tieude }}</td>
                <td>{{ $don->sohieu }}</td>
                <td>{{ $don->ngayvietdon }}</td>
-               <td>{{ $don->hanxuly }}</td>
+               <td>{{ $don->ngaynhan }}</td>
                <td>{{ $don->nguondon_type }}</td>
+               <td>{{ $don->socongvan }}</td>
+               <td>{{ $don->vanbanuyquen }}</td>
+               <td>{{ $don->doituongtrendon }}</td>
+               <td>{{ $don->nguoilienquan }}</td>
+               <td>{{ $don->hanxuly }}</td>
+               <td>{{ $don->tailieudinhkem }}</td>
+               <td>{{ $don->trangthai }}</td>
 
                     <td>
                         @if( $don->is_enabled )

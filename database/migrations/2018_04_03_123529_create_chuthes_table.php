@@ -17,12 +17,16 @@ class CreatechuthesTable extends Migration
             $table->string('ten')->default('');
             $table->string('email');
             $table->string('socmt');
+            $table->string('noicapcmt');
+            $table->date('ngaycapcmt');
             $table->smallInteger('gioi_tinh')->default(1);     // 1 = Ong, 0 = Ba
             $table->string('phone')->nullable()->default('');
             $table->date('ngay_sinh')->nullable()->default(null);
             $table->string('dia_chi')->nullable()->default('');
             $table->integer('loai_chu_the')->comment('1: ca nhan,2:tap the');
             $table->unsignedBigInteger('xa_id');
+            $table->string('hinhanh');
+            $table->integer('languoidaidien');
             $table->softDeletes();
             // Add some more columns
 

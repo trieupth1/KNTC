@@ -5,7 +5,6 @@ namespace App\Presenters;
 use Illuminate\Support\Facades\Redis;
 use App\Models\Loaidon;
 use App\Models\AdminUser;
-use App\Models\Nhomdon;
 use App\Models\DonQuocGia;
 use App\Models\Nguondon;
 
@@ -61,30 +60,6 @@ class DonPresenter extends BasePresenter
 
         $adminUser = $this->entity->adminUser;
         return $adminUser;
-    }
-
-    /**
-    * @return \App\Models\Nhomdon
-    * */
-    public function nhomdon()
-    {
-        if( \CacheHelper::cacheRedisEnabled() ) {
-            $cacheKey = \CacheHelper::keyForModel('NhomdonModel');
-            $cached = Redis::hget($cacheKey, $this->entity->nhomdon_id);
-
-            if( $cached ) {
-                $nhomdon = new Nhomdon(json_decode($cached, true));
-                $nhomdon['id'] = json_decode($cached, true)['id'];
-                return $nhomdon;
-            } else {
-                $nhomdon = $this->entity->nhomdon;
-                Redis::hsetnx($cacheKey, $this->entity->nhomdon_id, $nhomdon);
-                return $nhomdon;
-            }
-        }
-
-        $nhomdon = $this->entity->nhomdon;
-        return $nhomdon;
     }
 
     /**

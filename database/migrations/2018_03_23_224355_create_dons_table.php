@@ -17,14 +17,23 @@ class CreatedonsTable extends Migration
             $table->string('tieude');
             $table->string('sohieu');
             $table->date('ngayvietdon');
+            $table->date('ngaynhan');
             $table->longText('noidung');
             $table->integer('loaidon_id')->comment('loai don');
             $table->unsignedBigInteger('admin_user_id')->default(0);
-            $table->unsignedBigInteger('nhomdon_id')->default(0);
-            $table->integer('hanxuly')->nullable();
             $table->unsignedBigInteger('don_quoc_gia_id')->default(0);
             $table->unsignedBigInteger('nguondon_id');
             $table->string('nguondon_type');
+            $table->string('socongvan');
+            $table->date('ngaybanhanh');
+            $table->string('coquanbanhanh');
+            $table->string('vanbanuyquen');
+            $table->string('doituongtrendon');
+            $table->string('nguoilienquan');
+            $table->date('hanxuly');
+            $table->string('tailieudinhkem');
+            $table->integer('trangthai');
+
 
             $table->softDeletes();
             // Add some more columns

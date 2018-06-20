@@ -53,6 +53,11 @@
         \Route::resource('donvis', 'Admin\DonviController');
 
         \Route::resource('tintucs', 'Admin\TintucController');
+        \Route::resource('dons', 'Admin\DonController');
+        \Route::resource('chuthes', 'Admin\ChutheController');
+        \Route::resource('donviguidons', 'Admin\DonviguidonController');
+        \Route::resource('dons', 'Admin\DonController');
+        \Route::resource('dons', 'Admin\DonController');
         /* NEW ADMIN RESOURCE ROUTE */
         \Route::get('auto', 'Admin\VanbanController@vanBanAutocomplete')->name('autocomplete');
     });

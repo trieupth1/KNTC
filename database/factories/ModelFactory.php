@@ -230,4 +230,121 @@ $factory->define(App\Models\Tintuc::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Don::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'tieude' => '',
+        'sohieu' => '',
+        'ngayvietdon' => '',
+        'noidung' => '',
+        'loaidon_id' => '',
+        'admin_user_id' => '',
+        'don_quoc_gia_id' => '',
+        'nguondon_id' => '',
+        'nguondon_type' => '',
+        'socongvan' => '',
+        'vanbanuyquen' => '',
+        'doituongtrendon' => '',
+        'nguoilienquan' => '',
+        'hanxuly' => '',
+        'tailieudinhkem' => '',
+        'trangthai' => '',
+    ];
+});
+
+$factory->define(App\Models\Chuthe::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'ten' => '',
+        'email' => '',
+        'socmt' => '',
+        'noicapcmt' => '',
+        'ngaycapcmt' => '',
+        'gioi_tinh' => '',
+        'phone' => '',
+        'ngay_sinh' => '',
+        'dia_chi' => '',
+        'loai_chu_the' => '',
+        'xa_id' => '',
+        'hinhanh' => '',
+        'languoidaidien' => '',
+    ];
+});
+
+$factory->define(App\Models\Donviguidon::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'sokyhieu' => '',
+        'donvi_id' => '',
+        'ngaybanhanh' => '',
+    ];
+});
+
+$factory->define(App\Models\Don::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'tieude' => '',
+        'sohieu' => '',
+        'ngayvietdon' => '',
+        'noidung' => '',
+        'loaidon_id' => '',
+        'admin_user_id' => '',
+        'don_quoc_gia_id' => '',
+        'nguondon_id' => '',
+        'nguondon_type' => '',
+        'socongvan' => '',
+        'vanbanuyquen' => '',
+        'doituongtrendon' => '',
+        'nguoilienquan' => '',
+        'hanxuly' => '',
+        'tailieudinhkem' => '',
+        'trangthai' => '',
+    ];
+});
+
+$factory->define(App\Models\Don::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'tieude' => '',
+        'sohieu' => '',
+        'ngayvietdon' => '',
+        'noidung' => '',
+        'loaidon_id' => '',
+        'admin_user_id' => '',
+        'don_quoc_gia_id' => '',
+        'nguondon_id' => '',
+        'nguondon_type' => '',
+        'socongvan' => '',
+        'vanbanuyquen' => '',
+        'doituongtrendon' => '',
+        'nguoilienquan' => '',
+        'hanxuly' => '',
+        'tailieudinhkem' => '',
+        'trangthai' => '',
+    ];
+});
+
+$factory->define(App\Models\Don::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'tieude' => '',
+        'sohieu' => '',
+        'ngayvietdon' => '',
+        'ngaynhan' => '',
+        'noidung' => '',
+        'loaidon_id' => '',
+        'admin_user_id' => '',
+        'don_quoc_gia_id' => '',
+        'nguondon_id' => '',
+        'nguondon_type' => '',
+        'socongvan' => '',
+        'vanbanuyquen' => '',
+        'doituongtrendon' => '',
+        'nguoilienquan' => '',
+        'hanxuly' => '',
+        'tailieudinhkem' => '',
+        'trangthai' => '',
+    ];
+});
+
 /* NEW MODEL FACTORY */

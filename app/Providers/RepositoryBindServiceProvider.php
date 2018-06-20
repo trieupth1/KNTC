@@ -120,6 +120,31 @@ class RepositoryBindServiceProvider extends ServiceProvider {
             \App\Repositories\Eloquent\TintucRepository::class
         );
 
+        $this->app->singleton(
+            \App\Repositories\DonRepositoryInterface::class,
+            \App\Repositories\Eloquent\DonRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\ChutheRepositoryInterface::class,
+            \App\Repositories\Eloquent\ChutheRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\DonviguidonRepositoryInterface::class,
+            \App\Repositories\Eloquent\DonviguidonRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\DonRepositoryInterface::class,
+            \App\Repositories\Eloquent\DonRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\DonRepositoryInterface::class,
+            \App\Repositories\Eloquent\DonRepository::class
+        );
+
         /* NEW BINDING */
     }
 }
